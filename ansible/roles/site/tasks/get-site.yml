@@ -1,0 +1,28 @@
+---
+- name: get test-devops-site
+  git:
+    repo: "{{ site_repo }}"
+    dest: "{{ site_dest }}"
+  register: commit
+
+- name: get new tags from remote
+  command: "git fetch --tags"
+  args:
+    chdir: "{{ site_dest }}"
+  changed_when: False
+  
+# such as tags.stdout = 0.5.0
+- name: get latest tag name
+  shell: "echo $(git describe --tags $(git rev-list --tags --max-count=1))"
+  args:
+    chdir: "{{ site_dest }}"
+  register: tags
+  changed_when: False
+
+- name: check if there is a new tag
+  lineinfile:
+    path: "{{ site_version }}"
+    state: present
+    line: "{{ tags.stdout }}"
+    create: yes
+  register: version

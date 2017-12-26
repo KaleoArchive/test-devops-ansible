@@ -1,0 +1,17 @@
+---
+- include_tasks: get-site.yml
+
+- name: deploy dev
+  git:
+    repo: "{{ site_repo }}"
+    dest: "{{ dev_dest }}"
+    version: "{{ dev_branch }}"
+  when: commit.changed
+
+- name: deploy staging
+  git:
+    repo: "{{ site_repo }}"
+    dest: "{{ staging_dest }}"
+    version: "{{ staging_branch }}"
+  when: version.changed
+

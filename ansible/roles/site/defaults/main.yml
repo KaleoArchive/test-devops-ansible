@@ -1,0 +1,29 @@
+---
+# Site
+site_repo: "https://github.com/kaleocheng/test-devops-site.git"
+site_dest: "/data/site"
+site_version: "{{ site_dest }}/version"
+
+dev_servername: "dev.kaleo.run"
+dev_dest: "/var/www/html/dev.kaleo.run"
+dev_branch: "dev-gh-pages"
+
+staging_servername: "staging.kaleo.run"
+staging_dest: "/var/www/html/staging.kaleo.run"
+staging_branch: "staging-gh-pages"
+
+# Nginx and Git
+nginx_sites:
+        dev.kaleo.run:
+          - listen 80
+          - server_name "{{ dev_servername }}"
+          - root "{{ dev_dest }}" 
+          - index index.html
+        staging.kaleo.run:
+          - listen 80
+          - server_name "{{ staging_servername }}"
+          - root "{{ staging_dest }}" 
+          - index index.html
+          
+git_packages:
+  - git
