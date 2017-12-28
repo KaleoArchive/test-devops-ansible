@@ -11,8 +11,13 @@ Vagrant.configure("2") do |config|
   end
 
   # Install git, hugo and fortune
+  # We want to use 'git worktree', and there is a bug in
+  # git 2.7.4(https://discourse.gohugo.io/t/github-deployment-using-worktrees-failing/5918/5)
+  # So we use the ppa:git-core instead
   config.vm.provision "shell", inline: <<-SHELL
-    apt-get update && apt-get install git hugo fortune-mod -y
+    add-apt-repository ppa:git-core/ppa -y
+    apt-get update
+    apt-get install git hugo fortune-mod -y
   SHELL
   
   # Install Golang and some deps
