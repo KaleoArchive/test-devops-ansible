@@ -48,6 +48,10 @@ $ git config --global user.email "your@email"
 Change your host and the default.yml  in `ansible`, and then just play.
 ```shell
 $ cd ansible
+
+# Install requiestments
+$ ansible-galaxy install -r requirements.yml
+
 $ ansible-playbook -i hosts site.yml
 ```
 This book updates the dev for every new commit and updates the staging for every new tag.
