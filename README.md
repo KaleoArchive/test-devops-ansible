@@ -8,9 +8,8 @@ Ansible scritps for test-devops
 - [**Ansible**](https://www.ansible.com/)
 
 Change your host and the default.yml  in `ansible`, and then just play.
-```shell
-$ cd ansible
 
+```shell
 # Install requiestments
 $ ansible-galaxy install -r requirements.yml
 
