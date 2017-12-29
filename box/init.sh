@@ -15,6 +15,3 @@ fi
 
 git config --global user.name $git_username
 git config --global user.email $git_email
-
-# build 'test-devops-cli' and get the 'test-devops-site' and 'test-devops-neo' 
-cd $cli_path && ./cli.sh init
