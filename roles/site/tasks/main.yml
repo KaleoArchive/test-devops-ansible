@@ -15,3 +15,13 @@
     version: "{{ staging_branch }}"
   when: version.changed
 
+- name: add script to auto update
+  template:
+    src: update_site.sh.j2
+    dest: "{{ site_update_script_dest }}/update_site.sh"
+    mode: 0755
+- name: Add crontab job fetch to the site every N minutes
+  cron:
+    name: "update site"
+    minute: "*/{{ site_update_every_n_min }}"
+    job: "{{ site_update_script_dest }}/update_site.sh"

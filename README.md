@@ -15,7 +15,7 @@ $ ansible-galaxy install -r requirements.yml
 
 $ ansible-playbook -i hosts site.yml
 ```
-This book updates the dev for every new commit and updates the staging for every new tag.
+This book updates the dev for every new commit and updates the staging for every new tag. Of course, It adds a crontab job to update the site every N(default 5) minutes.
 
 you could access this site by you url for now, The defaults:
 

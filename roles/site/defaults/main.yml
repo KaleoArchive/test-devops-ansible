@@ -5,7 +5,8 @@ site_repo: "https://github.com/kaleocheng/test-devops-site.git"
 # the dest on server
 site_dest: "/data/site"
 site_version: "{{ site_dest }}/version"
-
+site_update_script_dest: "/usr/local/bin"
+site_update_every_n_min: 5
 # Change the servername to yours
 dev_servername: "dev.kaleo.run"
 dev_dest: "/var/www/html/dev.kaleo.run"

@@ -1,2 +1,2 @@
 *.log
-*/*.retry
+*.retry
